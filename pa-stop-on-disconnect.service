@@ -1,0 +1,13 @@
+[Unit]
+Description=Stop audio on PulseAudio device disconnect
+After=pulseaudio.service
+Requires=pulseaudio.service
+
+[Service]
+Environment=PYTHONUNBUFFERED=1
+ExecStart=%h/.local/bin/pa-stop-on-disconnect.sh
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target
